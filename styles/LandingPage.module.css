@@ -149,34 +149,8 @@
   }
 }
 
-.sectionFour {
-  text-align: center;
-  background: #2b3441;
-  margin-top: 20vh;
-}
-
-.sectionFour div {
-  width: 90vw;
-  max-width: 1500px;
-  margin: auto;
-  padding: 5vw 18vw;
-  font-size: 15px;
-  line-height: 1.5em;
-}
-
-.sectionFour i {
-  font-size: 40px;
-}
-
-.sectionFour a {
-  font-size: 13px;
-}
-
-.sectionFour a:hover {
-  text-decoration: underline;
-}
-
 .footer {
+  margin-top: 20vh;
   background: #2b3441;
   padding: 50px 0;
   text-align: left;

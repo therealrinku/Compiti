@@ -1,4 +1,4 @@
-# Robonotes
+# doit
 
 Simple todo list application with minimal UI and drag-and-drop functionality
 

@@ -48,7 +48,7 @@ export default function signupPage() {
     <>
       <Navbar />
       <div className={loginPageStyles.loginPage}>
-        <Meta title="robonote- Signup" />
+        <Meta title="doit- Signup" />
         <div>
           <form onSubmit={signUp}>
             <label htmlFor="email">Email</label>
