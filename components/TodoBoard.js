@@ -1,6 +1,6 @@
 import homePageStyles from "../styles/HomePage.module.css";
 import moment from "moment";
-import Torobodoitem from "../components/Torobodoitem";
+import TodoItem from "../components/TodoItem";
 import { useContext, useState } from "react";
 import { db } from "../firebase/main";
 import UserContext from "../userContext";
@@ -80,7 +80,7 @@ export default function TodoBoard({ localMode, fullTodoList, todosDate, todos, s
       <div className={homePageStyles.todos}>
         {todos.map((todo, i) => {
           return (
-            <Torobodoitem
+            <TodoItem
               key={i}
               index={i}
               todo={todo}
