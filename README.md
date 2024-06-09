@@ -25,7 +25,7 @@ https://firebase.google.com/docs/web/setup
 https://firebase.google.com/docs/firestore
 https://firebase.google.com/docs/auth
 
-### Installation
+### Local Development
 
 1. Clone the repository.
    ```bash
