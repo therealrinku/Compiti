@@ -6,10 +6,12 @@ import TodoBoard from "../components/TodoBoard";
 import { db } from "../firebase/main";
 import Spinner from "../components/Spinner";
 import UserContext from "../userContext";
-import Meta from "./Meta";
+import Meta from "../components/Meta";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
-export default function HomePage({ demoMode, demoDates }) {
+export default function HomePage() {
   //date stuffs
   const [currentDate, setCurrentDate] = useState(new Date());
   const [datePlus, setDatePlus] = useState(0);
@@ -23,11 +25,13 @@ export default function HomePage({ demoMode, demoDates }) {
   const [todos, setTodos] = useState([]);
 
   //loading handler
-  const [loading, setLoading] = useState(demoMode ? false : true);
+  const [loading, setLoading] = useState(false);
 
-  const { currentUserEmail } = useContext(UserContext);
+  const { currentUserEmail, setEmailAddress } = useContext(UserContext);
 
   const [darkMode, setDarkMode] = useState(true);
+
+  const router = useRouter();
 
   useEffect(() => {
     //switching automatically to light mode.
@@ -36,8 +40,9 @@ export default function HomePage({ demoMode, demoDates }) {
       setDarkMode(false);
     }
 
-    //getting all todo list for all dates
-    if (!demoMode) {
+    //getting all todo list for all dates from db
+    //if user is logged in
+    if (currentUserEmail) {
       db.collection(currentUserEmail)
         .get()
         .then((docs) => {
@@ -46,6 +51,13 @@ export default function HomePage({ demoMode, demoDates }) {
           });
           setLoading(false);
         });
+
+      //try to load from localstorage if user is not logged in
+    } else {
+      const locallySavedTodos = JSON.parse(localStorage.getItem("todos"));
+      if (locallySavedTodos) {
+        setTodos(locallySavedTodos);
+      }
     }
   }, []);
 
@@ -77,14 +89,16 @@ export default function HomePage({ demoMode, demoDates }) {
       const indexOfDestinationBoardUpdated = fullTodoListCopy.findIndex((e) => e.date === destination.droppableId);
       const updatedDestionationTodos = fullTodoListCopy[indexOfDestinationBoardUpdated].todos;
 
-      //update in db
-
-      if (!demoMode) {
+      //update in db if user is loggedin
+      //else update in localstorage
+      if (currentUserEmail) {
         db.collection(currentUserEmail).doc(destination.droppableId).set({ todos: updatedDestionationTodos });
 
         if (source.droppableId !== destination.droppableId) {
           db.collection(currentUserEmail).doc(source.droppableId).set({ todos: updatedSourceTodos });
         }
+      } else {
+        localStorage.setItem("todos", fullTodoListCopy);
       }
     }
   };
@@ -96,6 +110,15 @@ export default function HomePage({ demoMode, demoDates }) {
     else localStorage.removeItem("lightMode");
   };
 
+  const handleLogout = () => {
+    if (currentUserEmail) {
+      localStorage.setItem("loginToken", null);
+      setEmailAddress("");
+    } else {
+      router.push("/");
+    }
+  };
+
   return (
     <>
       <Meta />
@@ -104,7 +127,14 @@ export default function HomePage({ demoMode, demoDates }) {
       ) : (
         <div style={{ marginTop: "3vh" }} className={darkMode ? homeStyles.darkMode : null}>
           {/*option section*/}
-          <HomeNav currentDate={currentDate} setCurrentDate={setCurrentDate} demoMode={demoMode} setDatePlus={setDatePlus} darkMode={darkMode} setDarkMode={toggleDarkMode} />
+          <HomeNav
+            currentDate={currentDate}
+            setCurrentDate={setCurrentDate}
+            onLogout={handleLogout}
+            setDatePlus={setDatePlus}
+            darkMode={darkMode}
+            setDarkMode={toggleDarkMode}
+          />
 
           {/*todo boards*/}
           <DragDropContext onDragEnd={onDragEnd}>
@@ -115,7 +145,7 @@ export default function HomePage({ demoMode, demoDates }) {
                     {(provided, snapshot) => (
                       <section ref={provided.innerRef}>
                         <TodoBoard
-                          demoMode={demoMode}
+                          localMode={!currentUserEmail}
                           todosDate={e}
                           fullTodoList={todos}
                           setFullTodos={setTodos}
@@ -130,6 +160,23 @@ export default function HomePage({ demoMode, demoDates }) {
             </div>
           </DragDropContext>
         </div>
+      )}
+
+      {!currentUserEmail && (
+        <p
+          style={{
+            position: "fixed",
+            padding: "0 25px",
+            bottom: 0,
+            color: "white",
+            fontSize: 10,
+            textAlign: "center",
+            width: "100%",
+          }}
+        >
+          Note: currently all your todos are saved locally. To make sure they don't get lost, please{" "}
+          <Link href="/login">login.</Link>
+        </p>
       )}
 
       <style jsx global>{`

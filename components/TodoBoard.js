@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { db } from "../firebase/main";
 import UserContext from "../userContext";
 
-export default function TodoBoard({ demoMode, fullTodoList, todosDate, todos, setFullTodos }) {
+export default function TodoBoard({ localMode, fullTodoList, todosDate, todos, setFullTodos }) {
   //check if date is past
   const todayDate = moment(new Date());
   const dateDiff = moment(todosDate).diff(todayDate, "days");
@@ -56,9 +56,13 @@ export default function TodoBoard({ demoMode, fullTodoList, todosDate, todos, se
         break;
     }
 
-    //update in db
-
-    if (!demoMode) db.collection(currentUserEmail).doc(todosDate).set({ todos: finalUpdatedTodoList });
+    //update in db if user is logged in
+    //else update in localstorage
+    if (!localMode) {
+      db.collection(currentUserEmail).doc(todosDate).set({ todos: finalUpdatedTodoList });
+    } else {
+      localStorage.setItem("todos", JSON.stringify(fullTodoListCopy));
+    }
   };
 
   const AddNewTodo = (e) => {
@@ -89,13 +93,13 @@ export default function TodoBoard({ demoMode, fullTodoList, todosDate, todos, se
       </div>
 
       {/*new todo input*/}
-      <form onSubmit={AddNewTodo} style={todos.length === 16 ? { display: "none" } : null}>
+      <form onSubmit={AddNewTodo} style={todos.length === 17 ? { display: "none" } : null}>
         <input type="text" value={newTodo} onChange={(e) => setNewTodo(e.target.value)} />
       </form>
 
       {/*dummy lines*/}
       <div>
-        {[...Array(16 - todos.length)].map((_, i) => {
+        {[...Array(17 - todos.length)].map((_, i) => {
           return <li key={i}></li>;
         })}
       </div>
