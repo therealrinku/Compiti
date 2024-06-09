@@ -12,7 +12,7 @@ export default function Navbar() {
   return (
     <nav className={navbarStyles.nav}>
       <div>
-        <Link href="/">doit</Link>
+        <Link href="/">robodoit</Link>
 
         <ul
           className={

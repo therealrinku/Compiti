@@ -3,7 +3,7 @@ import Backdrop from "./Backdrop";
 import TodoDetailModal from "./TodoDetailModal";
 import { Draggable } from "react-beautiful-dnd";
 
-export default function TodoItem({ todo, date, index, doUndo, deleteTodo }) {
+export default function Torobodoitem({ todo, date, index, doUndo, deleteTodo }) {
   const [showDetailModal, setShowDetailModal] = useState(false);
 
   //toggle detail modal

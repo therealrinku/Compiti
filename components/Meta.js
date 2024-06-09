@@ -13,6 +13,6 @@ export default function Meta({ title, description }) {
 }
 
 Meta.defaultProps = {
-  title: "doit",
+  title: "robodoit",
   description: "Your daily task manager.",
 };

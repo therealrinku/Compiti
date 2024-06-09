@@ -45,7 +45,7 @@ export default function loginPage() {
     <>
       <Navbar />
       <div className={loginPageStyles.loginPage}>
-        <Meta title="doit - Login" />
+        <Meta title="robodoit - Login" />
         <div>
           <form onSubmit={logIn}>
             <label htmlFor="email">Email</label>

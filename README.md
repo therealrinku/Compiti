@@ -1,4 +1,4 @@
-# doit
+# robodoit
 
 Simple todo list application with minimal UI and drag-and-drop functionality
 

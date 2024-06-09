@@ -33,7 +33,7 @@ export default function LandingPage() {
       img: <AiOutlineDrag />,
     },
     {
-      p: "We update doit regularly to remove bugs and most importantly we listen to your suggestions.",
+      p: "We update robodoit regularly to remove bugs and most importantly we listen to your suggestions.",
       h4: "Regular improvements",
       img: <RiStarLine />,
     },
@@ -44,12 +44,12 @@ export default function LandingPage() {
     {
       userImageUrl: "https://bit.ly/3i4iL5g",
       userName: "Jennifer Rodriguez",
-      review: "doit is simply the best todo app i have ever used.",
+      review: "robodoit is simply the best todo app i have ever used.",
     },
     {
       userImageUrl: "https://bit.ly/33XNNn5",
       userName: "Abella Fernandes",
-      review: "doit is very simple and easy to use todo app to get more done with less distractions.",
+      review: "robodoit is very simple and easy to use todo app to get more done with less distractions.",
     },
     {
       userImageUrl: "https://bit.ly/3fN3kf1",
@@ -64,7 +64,7 @@ export default function LandingPage() {
     {
       userImageUrl: "https://bit.ly/2RNBhEf",
       userName: "Tony Heaton",
-      review: "My search for best todo app has come to an end , thanks to doit.",
+      review: "My search for best todo app has come to an end , thanks to robodoit.",
     },
     {
       userImageUrl: "https://bit.ly/3fPkfgQ",
@@ -81,11 +81,11 @@ export default function LandingPage() {
           <MainImage />
 
           <h2 style={{ marginTop: "25px" }}>
-            doit is a new todo list manager for your better productivity and organization.
+            robodoit is a new todo list manager for your better productivity and organization.
           </h2>
           <p>
             With minimal and easy to use design, we are ready to take over the productivity world, people in tech giants
-            like yoxx are already using doit.
+            like yoxx are already using robodoit.
           </p>
           {currentUserEmail ? (
             <button onClick={() => router.push("/app")}>Go to App</button>
@@ -141,7 +141,7 @@ export default function LandingPage() {
 
         <footer className={landingPageStyles.footer}>
           <section>
-            <h4>doit</h4>
+            <h4>robodoit</h4>
             <p>Built with ❤️ </p>
             <Link href="/app">Go to App</Link>
             <Link href="/login">Login</Link>
