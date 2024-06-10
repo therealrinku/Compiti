@@ -114,9 +114,9 @@ export default function HomePage() {
     if (currentUserEmail) {
       localStorage.setItem("loginToken", null);
       setEmailAddress("");
-    } else {
-      router.push("/");
     }
+
+    router.push("/");
   };
 
   return (
