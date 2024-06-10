@@ -61,7 +61,7 @@ export default function TodoBoard({ localMode, fullTodoList, todosDate, todos, s
     if (!localMode) {
       db.collection(currentUserEmail).doc(todosDate).set({ todos: finalUpdatedTodoList });
     } else {
-      localStorage.setItem("todos", JSON.stringify(fullTodoListCopy));
+      localStorage.setItem("todos", JSON.stringify(finalUpdatedTodoList));
     }
   };
 

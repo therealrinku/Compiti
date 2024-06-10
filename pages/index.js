@@ -6,7 +6,7 @@ import { GoBrowser } from "react-icons/go";
 import { BiMoon } from "react-icons/bi";
 import { AiOutlineDrag, AiOutlineDollar, AiFillQuestionCircle } from "react-icons/ai";
 import { RiStarLine } from "react-icons/ri";
-import { FaQuoteLeft } from "react-icons/fa";
+import { FaFire, FaLocationArrow, FaQuoteLeft } from "react-icons/fa";
 import Link from "next/link";
 import { useContext } from "react";
 import UserContext from "../userContext";
@@ -87,11 +87,11 @@ export default function LandingPage() {
             With minimal and easy to use design, we are ready to take over the productivity world, people in tech giants
             like yoxx are already using robodoit.
           </p>
-          {currentUserEmail ? (
-            <button onClick={() => router.push("/app")}>Go to App</button>
-          ) : (
-            <button onClick={() => router.push("/signup")}>Get Started</button>
-          )}
+          {!currentUserEmail && <button onClick={() => router.push("/signup")}>Get Started</button>}
+
+          <Link style={{ display: "block", marginTop: 12, fontSize: 12 }} href="/app">
+            Go to the App <FaFire />
+          </Link>
         </section>
 
         <section className={landingPageStyles.sectionTwo}>
@@ -143,7 +143,7 @@ export default function LandingPage() {
           <section>
             <h4>robodoit</h4>
             <p>Built with ❤️ </p>
-            <Link href="/app">Go to App</Link>
+            <Link href="/app">Go to the App</Link>
             <Link href="/login">Login</Link>
             <Link href="/signup">Signup</Link>
           </section>
