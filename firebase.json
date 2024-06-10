@@ -1,6 +1,7 @@
 {
   "hosting": {
-    "public": "out",
+    "site" :"robodoit",
+    "public": ".next",
     "ignore": [
       "firebase.json",
       "**/.*",
