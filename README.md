@@ -1,42 +1,45 @@
-# robodoit
+<div align="center">
+    <img src="https://cdn-icons-png.flaticon.com/128/2387/2387635.png" alt="Logo" width="80" height="80">
 
-simple todo list application with minimal UI and drag-and-drop functionality
+  <h3 align="center">robodoit</h3>
+
+  <p align="center">
+    simple todo list application with minimal UI and drag-and-drop functionality
+    <br />
+  </p>
+</div>
 
 ## Features
 
-- **Add any todos or notes:** Add anything that you want to get done or even any notes you wanna keep for the day in the minimal and simple UI
-- **Move Todos or notes with ease:** Drag and Drop functionality makes managing todos easy with the help of drag and drop functionality
-- **Dark Mode:** No explanation needed, I know you'll like it
+✨ Minimal and simple todo app
+
+🔥 Drag and Drop functionality to drag and drop todos between different days
+
+🔥 Dark Mode, of course!
+
+## Headshots
+<img width="1371" alt="Screenshot 2024-12-22 at 08 37 44" src="https://github.com/user-attachments/assets/f37121f9-c078-412d-b36a-20ece756c1e9" />
+
 
 ## Technologies Used
+<img src="https://img.shields.io/badge/next-000000?style=for-the-badge&logo=nextdotjs&logoColor=white"/>
+<img src="https://img.shields.io/badge/firebase-000000?style=for-the-badge&logo=firebase&logoColor=blue"/>
+<img src="https://img.shields.io/badge/javascript-000000?style=for-the-badge&logo=javascript&logoColor=blue"/>
 
-- **Next.js:** Robust React framework for building the front end.
-- **Firebase:** For user authentication and storing the data and hosting the frontend website
-
-## Getting Started
+## Development
 
 To run this project locally, follow these steps:
 
-### Prerequisites
-
-- Node.js installed
-- Firebase setup for firestore and authentication
-https://firebase.google.com/docs/web/setup
-https://firebase.google.com/docs/firestore
-https://firebase.google.com/docs/auth
-
-### Local Development
-
 1. Clone the repository.
    ```bash
-   git clone https://github.com/therealrinku/roboshare.git
+   git clone https://github.com/therealrinku/robodoit.git
 
 2. Install the dependencies.
    ```bash
    yarn install
-   
-3. Get your firebase app configand to the .env file(make sure to match naming from firebase/main.js file)
 
-5. Run the project.
+3. Get your firebase app config with firebase authentication and firestore configured and add it to the .env file(make sure to match naming from firebase/main.js file) 
+
+4. Run the project.
    ```bash
    yarn run dev
